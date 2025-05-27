@@ -89,7 +89,7 @@ function OtpVerification() {
       await confirmationResult.confirm(enteredOtp); // Xác thực OTP Firebase
 
       const formData = JSON.parse(localStorage.getItem('registerForm'));
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/account/addAccountWeb`, {
+      const res = await fetch(`${process.env.REACT_PUBLIC_API_URL}/account/addAccountWeb`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

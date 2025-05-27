@@ -54,7 +54,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
             setIsLoadingMessages(true);
             setMessagesError('');
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/findAllMessagesWeb`, {
+                const res = await fetch(`${process.env.REACT_PUBLIC_API_URL}/message/findAllMessagesWeb`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                     body: JSON.stringify({ conversation_id: conversationId })
@@ -219,7 +219,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
                 formData.append('contentType', 'text');
             }
 
-            const textAndImagePromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/createMessagesWeb`, {
+            const textAndImagePromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/message/createMessagesWeb`, {
                 method: 'POST',
                 body: formData,
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('user_token')}` }
@@ -253,7 +253,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
                 fileFormData.append('media', file);
                 if (currentReplyToId) fileFormData.append('replyTo', currentReplyToId);
 
-                const filePromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/uploadMediaWeb`, {
+                const filePromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/message/uploadMediaWeb`, {
                     method: 'POST',
                     body: fileFormData,
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('user_token')}` }
@@ -309,7 +309,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
 
     const handleRecallMessage = async (messageId) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/recallMessageWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/message/recallMessageWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                 body: JSON.stringify({ message_id: messageId })
@@ -326,7 +326,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
 
     const handleDeleteForMe = async (messageId) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/deleteMyMessageWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/message/deleteMyMessageWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                 body: JSON.stringify({ message_id: messageId, user_id: currentLoggedInUserId })
@@ -392,7 +392,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
                 forwarded_by: currentLoggedInUserId,
                 original_sender: typeof originalSender === 'object' ? originalSender._id : originalSender
             };
-            const forwardMessagePromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/forwardMessageWeb`, {
+            const forwardMessagePromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/message/forwardMessageWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                 body: JSON.stringify(body)
@@ -404,7 +404,7 @@ function MainContent({ selectedChat, currentLoggedInUserId, onConversationDelete
                 formData.append('user_id', currentLoggedInUserId);
                 formData.append('content', additionalMessage.trim());
                 formData.append('contentType', 'text');
-                const sendAdditionalMessagePromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/createMessagesWeb`, {
+                const sendAdditionalMessagePromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/message/createMessagesWeb`, {
                     method: 'POST',
                     body: formData,
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('user_token')}` }

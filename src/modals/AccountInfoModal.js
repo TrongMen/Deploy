@@ -13,7 +13,7 @@ const AccountInfoModal = ({ isOpen, onClose, onOpenUpdateModal }) => {
       const storedUser = JSON.parse(stored);
 
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/findUserByUserID`, {
+        const res = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/findUserByUserID`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const AccountInfoModal = ({ isOpen, onClose, onOpenUpdateModal }) => {
     formData.append("image", file);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/changeImageAvatarWeb`,
+        `${process.env.REACT_PUBLIC_API_URL}/user/changeImageAvatarWeb`,
         {
           method: "POST",
           body: formData,
@@ -78,7 +78,7 @@ const AccountInfoModal = ({ isOpen, onClose, onOpenUpdateModal }) => {
     formData.append("image", file);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/changeImageCoverAvatarWeb`,
+        `${process.env.REACT_PUBLIC_API_URL}/user/changeImageCoverAvatarWeb`,
         {
           method: "POST",
           body: formData,

@@ -24,7 +24,7 @@ const AddFriendModal = ({ isOpen, onClose, currentLoggedInUserId }) => {
     setActionMessage('');
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/findUserByPhoneWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/findUserByPhoneWeb`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const AddFriendModal = ({ isOpen, onClose, currentLoggedInUserId }) => {
     }
     setActionMessage('Đang gửi lời mời...');
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -87,7 +87,7 @@ const AddFriendModal = ({ isOpen, onClose, currentLoggedInUserId }) => {
     }
     setActionMessage('Đang hủy lời mời...');
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

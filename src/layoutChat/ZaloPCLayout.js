@@ -10,7 +10,7 @@ import UpdateInfoModal from '../modals/UpdateInfoModal';
 import AddFriendModal from '../modals/AddFriendModal';
 import CreateGroupModal from '../modals/CreateGroupModal';
 
-const SOCKET_SERVER_URL = `${process.env.NEXT_PUBLIC_API_URL}`;
+const SOCKET_SERVER_URL = `${process.env.REACT_PUBLIC_SOCKET_URL}`;
 
 function ZaloPCLayout({ onLogout }) {
     const [selectedChat, setSelectedChat] = useState(null);
@@ -94,12 +94,12 @@ function ZaloPCLayout({ onLogout }) {
     let fetchedFriendsAsConversations = [];
 
     try {
-        const groupPromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/getConversationGroupByUserIDWeb`, {
+        const groupPromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/getConversationGroupByUserIDWeb`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
             body: JSON.stringify({ user_id: loggedInUser._id }),
         });
-        const friendsPromise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getFriends/${loggedInUser._id}`,{
+        const friendsPromise = fetch(`${process.env.REACT_PUBLIC_API_URL}/user/getFriends/${loggedInUser._id}`,{
             headers: { 'Authorization': `Bearer ${localStorage.getItem('user_token')}` }
         });
         const [groupResponse, friendsResponse] = await Promise.all([groupPromise, friendsPromise]);
@@ -124,7 +124,7 @@ function ZaloPCLayout({ onLogout }) {
                 const conversationPromises = friendsData.map(async (friend) => {
                     console.log(`[ZaloPCLayout] Friend data from API for ${friend.userName}:`, JSON.stringify(friend)); 
                     try {
-                        const convResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/createConversationsWeb`, {
+                        const convResponse = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/createConversationsWeb`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                             body: JSON.stringify({
@@ -176,7 +176,7 @@ function ZaloPCLayout({ onLogout }) {
         let combinedList = [...fetchedGroups, ...fetchedFriendsAsConversations];
 
         const lastMessagePromises = combinedList.map(conv =>
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/getLastMessageWeb`, {
+            fetch(`${process.env.REACT_PUBLIC_API_URL}/message/getLastMessageWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                 body: JSON.stringify({
@@ -427,7 +427,7 @@ const handleReceiveMessage = (newMessageData) => {
     const handleInitiateChatWithFriend = async (friend) => {
         if (!loggedInUser || !friend) return;
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/createConversationsWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/createConversationsWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('user_token')}` },
                 body: JSON.stringify({ user_id: loggedInUser._id, friend_id: friend._id }),

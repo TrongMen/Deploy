@@ -66,7 +66,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         if (window.confirm(`Bạn có chắc chắn muốn giải tán nhóm "${groupName}" không?`)) {
             const token = localStorage.getItem('user_token');
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/disbandGroupWeb`, {
+                const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/disbandGroupWeb`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({ conversation_id: groupId, user_id: currentLoggedInUserId })
@@ -92,7 +92,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setFriendsList([]);
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getFriends/${currentLoggedInUserId}`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/getFriends/${currentLoggedInUserId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -123,7 +123,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
                     setIsLoadingReceivedRequests(true);
                     setIsLoadingSentRequests(true);
                     try {
-                        const receivedRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/friend-request/${currentLoggedInUserId}`, {
+                        const receivedRes = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/friend-request/${currentLoggedInUserId}`, {
                              headers: { 'Authorization': `Bearer ${token}` }
                         });
                         if (receivedRes.ok) {
@@ -139,7 +139,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
                     }
 
                     try {
-                        const sentRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getSentFriendRequests/${currentLoggedInUserId}`, {
+                        const sentRes = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/getSentFriendRequests/${currentLoggedInUserId}`, {
                              headers: { 'Authorization': `Bearer ${token}` }
                         });
                         if (sentRes.ok) {
@@ -163,7 +163,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
                     setGroupsError('');
                     setGroupsList([]);
                     try {
-                        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/getConversationGroupByUserIDWeb`, {
+                        const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/getConversationGroupByUserIDWeb`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                             body: JSON.stringify({ user_id: currentLoggedInUserId }),
@@ -195,7 +195,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setRequestActionStatus(prev => ({ ...prev, [`received_${senderId}`]: 'Đang xử lý...' }));
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/acceptFriendRequestWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/acceptFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: senderId }),
@@ -222,7 +222,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setRequestActionStatus(prev => ({ ...prev, [`received_${senderId}`]: 'Đang xử lý...' }));
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(${process.env.NEXT_PUBLIC_API_URL}/user/deleteFriendRequestWeb, {
+            const response = await fetch(${process.env.REACT_PUBLIC_API_URL}/user/deleteFriendRequestWeb, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: senderId }),
@@ -247,7 +247,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setRequestActionStatus(prev => ({ ...prev, [`sent_${recipientId}`]: 'Đang thu hồi...' }));
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: recipientId }),
@@ -276,7 +276,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setGlobalSearchActionStatus('');
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/findUserByPhoneWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/findUserByPhoneWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ phoneNumber: searchTerm.trim() }),
@@ -304,7 +304,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setGlobalSearchActionStatus('Đang gửi lời mời...');
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: recipientId }),
@@ -329,7 +329,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setGlobalSearchActionStatus('Đang hủy lời mời...');
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/cancelFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: recipientId }),
@@ -370,7 +370,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
             setRequestActionStatus(prev => ({ ...prev, [`friend_${friendIdToDelete}`]: 'Đang xóa...' }));
             const token = localStorage.getItem('user_token');
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/deleteFriendWeb`, {
+                const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/deleteFriendWeb`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({

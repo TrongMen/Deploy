@@ -37,7 +37,7 @@ function ZaloRegistration() {
           message = 'Số điện thoại phải đủ 10 chữ số';
         } else {
           try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/account/check-phone?phoneNumber=0${value.slice(-9)}`);
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/account/check-phone?phoneNumber=0${value.slice(-9)}`);
             const data = await response.json();
             if (data.exists) {
               message = 'Số điện thoại đã được đăng ký, vui lòng nhập số khác';
@@ -123,7 +123,7 @@ function ZaloRegistration() {
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/account/addAccountWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/account/addAccountWeb`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

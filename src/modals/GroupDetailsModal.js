@@ -88,7 +88,7 @@ function GroupDetailsModal({
         formData.append('user_id', currentUserId);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/updateConversationAvatarWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/updateConversationAvatarWeb`, {
                 method: 'PUT',
                 body: formData, // Khi gửi FormData, không cần đặt header 'Content-Type'
             });

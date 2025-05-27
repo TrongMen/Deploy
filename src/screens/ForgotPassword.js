@@ -31,7 +31,7 @@ function ForgotPassword() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/account/forgot-account`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/account/forgot-account`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

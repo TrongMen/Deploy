@@ -29,7 +29,7 @@ function AddMembersModal({
 
       if (currentUserId) {
         setIsLoadingFriends(true);
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getFriends/${currentUserId}`)
+        fetch(`${process.env.REACT_PUBLIC_API_URL}/user/getFriends/${currentUserId}`)
           .then(response => {
             if (!response.ok) {
               throw new Error('Không thể tải danh sách bạn bè.');
@@ -145,7 +145,7 @@ function AddMembersModal({
     setIsAdding(true);
     try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/conversation/addMemberToConversationGroupWeb`,
+          `${process.env.REACT_PUBLIC_API_URL}/conversation/addMemberToConversationGroupWeb`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

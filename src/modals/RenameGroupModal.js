@@ -39,7 +39,7 @@ function RenameGroupModal({
     setIsLoading(true); // Bắt đầu loading
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/changeConversationNameWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/changeConversationNameWeb`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

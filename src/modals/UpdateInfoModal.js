@@ -75,7 +75,7 @@ const UpdateInfoModal = ({ isOpen, onClose, userData, onUpdate }) => { // Thêm 
       const formattedDOB = `${day}/${month}/${year}`;
       const genderServerValue = mapGenderToServer(gender); // Chuyển 'Nam'/'Nữ' về 'male'/'female'
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/updateUserWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/updateUserWeb`, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',

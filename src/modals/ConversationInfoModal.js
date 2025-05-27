@@ -20,7 +20,7 @@ async function fetchUsersByIds(userIds) {
         return [];
     }
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-users-by-ids`, {
+        const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/get-users-by-ids`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userIds }),
@@ -76,7 +76,7 @@ function ConversationInfoModal({
             const fetchCurrentUserFriends = async () => {
                 setIsLoadingCurrentUserFriends(true);
                 try {
-                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/findUserByUserID`, {
+                    const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/findUserByUserID`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ user_id: currentUserId })
@@ -214,7 +214,7 @@ function ConversationInfoModal({
                 setFetchedFilesAndVideos([]);
     
                 try {
-                    const mediaResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/getAllMediaWeb`, {
+                    const mediaResponse = await fetch(`${process.env.REACT_PUBLIC_API_URL}/message/getAllMediaWeb`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ conversation_id: conversationId }),
@@ -232,7 +232,7 @@ function ConversationInfoModal({
                 }
     
                 try {
-                    const filesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message/getAllFileWeb`, {
+                    const filesResponse = await fetch(`${process.env.REACT_PUBLIC_API_URL}/message/getAllFileWeb`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ conversation_id: conversationId }),
@@ -325,7 +325,7 @@ function ConversationInfoModal({
                 setMembersError("");
                 setDetailedMembers([]); 
                 try {
-                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/getMemberFromConversationIDWeb`, {
+                    const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/getMemberFromConversationIDWeb`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ conversation_id: enrichedChatData._id }),
@@ -369,19 +369,19 @@ function ConversationInfoModal({
         switch (action) {
             case "removeMember":
                 confirmationMessage = `Bạn có chắc chắn muốn xóa ${memberName} khỏi nhóm?`;
-                url = `${process.env.NEXT_PUBLIC_API_URL}/conversation/removeMemberFromConversationGroupWeb`;
+                url = `${process.env.REACT_PUBLIC_API_URL}/conversation/removeMemberFromConversationGroupWeb`;
                 break;
             case "assignDeputy":
                 confirmationMessage = `Bạn có muốn phân ${memberName} làm phó nhóm?`;
-                url = `${process.env.NEXT_PUBLIC_API_URL}/conversation/authorizeDeputyLeaderWeb`;
+                url = `${process.env.REACT_PUBLIC_API_URL}/conversation/authorizeDeputyLeaderWeb`;
                 break;
             case "revokeDeputy":
                 confirmationMessage = `Bạn có chắc chắn muốn gỡ quyền phó nhóm của ${memberName}?`;
-                url = `${process.env.NEXT_PUBLIC_API_URL}/conversation/deleteDeputyLeaderWeb`;
+                url = `${process.env.REACT_PUBLIC_API_URL}/conversation/deleteDeputyLeaderWeb`;
                 break;
             case "transferLeadership":
                 confirmationMessage = `Bạn có chắc chắn muốn chuyển quyền trưởng nhóm cho ${memberName}? Hành động này không thể hoàn tác.`;
-                url = `${process.env.NEXT_PUBLIC_API_URL}/conversation/authorizeGroupLeaderWeb`;
+                url = `${process.env.REACT_PUBLIC_API_URL}/conversation/authorizeGroupLeaderWeb`;
                 break;
             default:
                 alert(`Hành động "${action}" chưa được hỗ trợ.`);
@@ -526,7 +526,7 @@ function ConversationInfoModal({
             return;
         }
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/sendFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: currentUserId, friend_id: targetMemberId })
@@ -609,7 +609,7 @@ function ConversationInfoModal({
         }
         setIsLeavingGroup(true);
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/leaveGroupWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/leaveGroupWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ conversation_id: enrichedChatData._id, user_id: currentUserId })
@@ -664,7 +664,7 @@ function ConversationInfoModal({
         }
         setIsDisbanding(true);
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/disbandGroupWeb`, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/disbandGroupWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ conversation_id: enrichedChatData._id, user_id: currentUserId })

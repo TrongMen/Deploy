@@ -19,7 +19,7 @@ function ZaloLogin({ onLoginSuccess }) {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/account/loginWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/account/loginWeb`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

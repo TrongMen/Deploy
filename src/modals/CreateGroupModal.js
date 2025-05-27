@@ -37,7 +37,7 @@ const CreateGroupModal = ({ isOpen, onClose, currentLoggedInUserId, onGroupCreat
         const fetchContacts = async () => {
           setIsLoadingContacts(true);
           try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getFriends/${currentLoggedInUserId}`);
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/getFriends/${currentLoggedInUserId}`);
             if (response.ok) {
               const data = await response.json();
               setContacts(data || []);
@@ -106,7 +106,7 @@ const CreateGroupModal = ({ isOpen, onClose, currentLoggedInUserId, onGroupCreat
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/createConversationsGroupWeb`, {
+      const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/conversation/createConversationsGroupWeb`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
