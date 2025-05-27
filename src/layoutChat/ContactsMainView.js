@@ -222,7 +222,7 @@ function ContactsMainView({ subViewType, currentLoggedInUserId, onInitiateChatWi
         setRequestActionStatus(prev => ({ ...prev, [`received_${senderId}`]: 'Đang xử lý...' }));
         const token = localStorage.getItem('user_token');
         try {
-            const response = await fetch(${process.env.REACT_PUBLIC_API_URL}/user/deleteFriendRequestWeb, {
+            const response = await fetch(`${process.env.REACT_PUBLIC_API_URL}/user/deleteFriendRequestWeb`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ user_id: currentLoggedInUserId, friend_id: senderId }),
