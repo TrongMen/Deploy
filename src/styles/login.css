@@ -1,0 +1,221 @@
+.zalo-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #eef2f7;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.zalo-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.zalo-header h1 {
+  font-size: 48px;
+  color: #0068ff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.zalo-header p {
+  font-size: 16px;
+  color: #333;
+}
+
+.login-form-wrapper {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 25px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.input-group:focus-within {
+  border-color: #0068ff;
+  box-shadow: 0 0 0 2px rgba(0, 104, 255, 0.2);
+}
+
+/* Style cho input icon (MỚI) */
+.input-group .input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  color: #8a8d91; /* Màu icon giống trang đăng ký */
+  font-size: 15px; /* Cỡ icon */
+  background-color: #f8f9fa; /* Nền nhẹ cho icon */
+  border-right: 1px solid #ccc; /* Đường kẻ ngăn cách */
+  align-self: stretch; /* Kéo dài theo chiều cao của input group */
+}
+
+.input-group input.input-field {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background-color: transparent;
+  width: 100%;
+}
+
+/* Điều chỉnh border-radius cho input field khi có icon bên trái */
+.input-group .input-icon + input.input-field,
+.input-group .country-code-selector + input.input-field {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group.password-group input.input-field {
+  padding-right: 40px; /* Giữ không gian cho nút toggle password */
+  /* Nếu có icon bên trái, border-radius trái đã được xử lý ở trên */
+}
+
+/* Nếu input field là con duy nhất (không có icon hay country code) */
+.input-group > input.input-field:first-child:last-child {
+  border-radius: 6px;
+}
+
+
+.country-code-selector {
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 15px;
+  border-right: 1px solid #ccc;
+  background-color: #f8f9fa;
+  align-self: stretch;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: #333;
+}
+
+.country-code-selector span {
+  margin-right: 5px;
+}
+
+.country-code-selector svg {
+  fill: #555;
+}
+
+.toggle-password-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #606770;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.toggle-password-button:hover {
+  color: #0068ff;
+}
+
+.login-button {
+  background-color: #0068ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  background-color: #0052cc;
+}
+
+.forgot-password-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0068ff;
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.qr-login-footer {
+  margin-top: 30px;
+}
+
+.qr-login-link {
+  font-size: 15px;
+  color: #0068ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.qr-login-link:hover {
+  text-decoration: underline;
+}
+
+.create-account-section {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e4e8;
+  text-align: center;
+}
+
+.create-account-section p {
+  font-size: 14px;
+  color: #606770;
+  margin-bottom: 8px;
+}
+
+.create-account-link {
+  display: inline-block;
+  background-color: #e7f3ff;
+  color: #0068ff;
+  border: 1px solid #adcffc;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.create-account-link:hover {
+  background-color: #d1e7ff;
+  border-color: #86b7ff;
+  text-decoration: none;
+}

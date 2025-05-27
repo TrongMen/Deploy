@@ -1,0 +1,232 @@
+.update-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2010;
+}
+
+.update-modal-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.update-modal-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #050505;
+  margin: 0;
+}
+
+.update-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #606770;
+  cursor: pointer;
+  line-height: 1;
+}
+.update-modal-close-btn:hover {
+  color: #050505;
+}
+
+.update-modal-body {
+  padding: 20px;
+  max-height: calc(70vh - 60px);
+  overflow-y: auto;
+}
+
+.update-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.update-modal-body::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 3px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.form-group input[type="text"]:focus {
+  border-color: #1b74e4;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(27, 116, 228, 0.2);
+}
+
+.gender-options {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.gender-options label {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: normal;
+  color: #050505;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.gender-options input[type="radio"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #1b74e4;
+}
+
+.dob-selects {
+  display: flex;
+  gap: 10px;
+}
+
+.dob-selects select {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+.dob-selects select:focus {
+  border-color: #1b74e4;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(27, 116, 228, 0.2);
+}
+
+
+.update-modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f5f6f7;
+  gap: 10px;
+}
+
+.update-modal-footer .cancel-btn,
+.update-modal-footer .submit-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.update-modal-footer .cancel-btn {
+  background-color: #e4e6eb;
+  color: #050505;
+}
+.update-modal-footer .cancel-btn:hover {
+  background-color: #d8dadf;
+}
+
+.update-modal-footer .submit-btn {
+  background-color: #1b74e4;
+  color: white;
+}
+.update-modal-footer .submit-btn:hover {
+  background-color: #1868cd;
+}
+
+.update-modal-header {
+  display: flex;
+  align-items: center; /* Căn giữa các item theo chiều dọc */
+  /* justify-content: space-between; đã có */
+  /* padding: 16px 20px; đã có */
+  /* border-bottom: 1px solid #f0f0f0; đã có */
+}
+
+.update-modal-back-btn {
+  background: none;
+  border: none;
+  font-size: 24px; /* Kích thước mũi tên */
+  color: #606770;
+  cursor: pointer;
+  padding: 0 10px 0 0; /* Thêm padding bên phải để không dính vào tiêu đề */
+  line-height: 1;
+  margin-right: auto; /* Đẩy tiêu đề và nút X sang phải */
+}
+.update-modal-back-btn:hover {
+  color: #050505;
+}
+
+.update-modal-header h2 {
+  /* font-size: 18px; đã có */
+  /* font-weight: 600; đã có */
+  /* color: #050505; đã có */
+  margin: 0; /* Bỏ margin mặc định */
+  flex-grow: 1; /* Cho phép tiêu đề chiếm không gian còn lại */
+  text-align: center; /* Căn giữa tiêu đề nếu không có nút X */
+  
+
+}
+
+/* Điều chỉnh lại header nếu muốn tiêu đề ở giữa và nút X ở cuối */
+.update-modal-header {
+  position: relative; /* Để định vị tuyệt đối nút X nếu cần */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Căn giữa nội dung (tiêu đề) */
+}
+
+.update-modal-back-btn {
+  position: absolute; /* Đặt nút back ở bên trái */
+  left: 20px; /* Hoặc padding của header */
+  /* các style khác giữ nguyên */
+  margin-right: 0; /* Bỏ margin-right: auto */
+   padding:0; 
+}
+
+.update-modal-close-btn {
+ position: absolute; 
+ right: 20px; 
+
+}
+
+.update-modal-header h2 {
+  
+}

@@ -1,0 +1,8 @@
+.zalo-pc-layout {
+  display: flex;
+  height: 100vh; /* Chiều cao bằng 100% chiều cao màn hình */
+  width: 100vw;  /* Chiều rộng bằng 100% chiều rộng màn hình */
+  overflow: hidden; /* Tránh cuộn trang không cần thiết */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f2f5; /* Màu nền chung nếu cần */
+}

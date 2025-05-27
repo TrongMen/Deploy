@@ -1,0 +1,272 @@
+.add-members-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+
+.add-members-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.add-members-modal-content {
+  background-color: #fff;
+  width: 500px;
+  max-width: 90%;
+  height: 600px;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.25s ease-in-out;
+}
+
+.add-members-modal-overlay.active .add-members-modal-content {
+  transform: scale(1);
+}
+
+.add-members-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.add-members-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.add-members-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #757575;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+.add-members-modal-close-btn:hover {
+  color: #333;
+}
+
+.add-members-modal-body {
+  padding: 0px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.add-members-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f0f2f5;
+  border-radius: 18px;
+  padding: 8px 12px;
+  margin: 15px 0;
+  border: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+.add-members-search-bar .search-icon {
+  color: #657786;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.add-members-search-bar input {
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #1c1e21;
+}
+.add-members-search-bar input::placeholder {
+  color: #888;
+}
+
+.add-members-list-section {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 5px; 
+}
+
+.add-members-list-section::-webkit-scrollbar { width: 6px; }
+.add-members-list-section::-webkit-scrollbar-thumb { background-color: #c1c1c1; border-radius: 3px; }
+.add-members-list-section::-webkit-scrollbar-track { background-color: #f0f2f5; }
+
+.add-members-list-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  margin: 15px 0 8px 0;
+  text-transform: uppercase;
+}
+
+.add-members-user-item {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; /* Bỏ đi để các item nằm sát nhau từ trái sang */
+  padding: 6px 0px; /* Giảm padding dọc một chút để item gọn hơn */
+  margin-bottom: 4px; /* Giảm margin dưới một chút */
+}
+
+.checkbox-container { /* Checkbox sẽ là item đầu tiên */
+  flex-shrink: 0;
+  margin-right: 10px; /* Khoảng cách giữa checkbox và avatar */
+  display: flex; /* Để căn giữa checkbox nếu cần */
+  align-items: center;
+}
+
+.user-identification-wrapper { /* Avatar và Tên/Status sẽ là item thứ hai */
+  display: flex;
+  align-items: center; 
+  
+  min-width: 0; 
+}
+
+.add-members-user-item .avatar {
+  width: 36px; /* Kích thước như trong ảnh tham khảo */
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 8px; /* Khoảng cách giữa avatar và tên, có thể điều chỉnh */
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.add-members-user-item .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-members-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  min-width: 0; 
+  flex-grow: 1; 
+}
+.add-members-user-info .name {
+  font-size: 14px; /* Cỡ chữ như trong ảnh */
+  font-weight: 500; /* Hoặc 400 nếu muốn mảnh hơn */
+  color: #050505; /* Màu chữ đen hơn một chút */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.add-members-user-info .status {
+  font-size: 12px;
+  color: #657786; 
+  margin-top: 1px;
+}
+
+.add-members-user-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #bcc0c4; /* Màu viền checkbox như trong ảnh */
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.add-members-user-item input[type="checkbox"]:checked {
+  background-color: #1877f2; /* Màu xanh dương của Facebook/Zalo */
+  border-color: #1877f2;
+}
+
+.add-members-user-item input[type="checkbox"]:checked::before {
+  content: '✓';
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.add-members-user-item input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+}
+
+.add-members-user-item input[type="checkbox"]:disabled:checked {
+  background-color: #1877f2; /* Giữ màu xanh khi đã chọn và bị vô hiệu hóa */
+  border-color: #1877f2;
+  opacity: 0.7; 
+}
+.add-members-user-item input[type="checkbox"]:disabled:not(:checked) {
+   background-color: #e9ecef;
+   border-color: #ced4da;
+}
+
+.add-members-modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end; /* "Hủy" và "Xác nhận" về phía bên phải */
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.add-members-footer-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600; /* Chữ đậm hơn cho nút */
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.add-members-footer-btn.cancel {
+  background-color: #e4e6eb; /* Màu nút Hủy giống Facebook/Zalo */
+  color: #050505;
+  /* border-color: #d1d1d1; */ /* Bỏ border nếu không cần */
+}
+.add-members-footer-btn.cancel:hover {
+  background-color: #d8dadf;
+}
+.add-members-footer-btn.confirm {
+  background-color: #1877f2; /* Màu nút Xác nhận */
+  color: white;
+}
+.add-members-footer-btn.confirm:hover {
+  background-color: #166fe5;
+}
+.add-members-footer-btn.confirm:disabled {
+  background-color: #a0cfff; /* Xanh dương rất nhạt, hơi xám */
+  border-color: #a0cfff;
+  color: #e4e6eb;         /* Màu chữ trắng ngà, để tương phản tốt hơn */
+  cursor: not-allowed;
+}
+.empty-add-members-list {
+    text-align: center;
+    color: #6c757d;
+    font-size: 13.5px;
+    padding: 20px 0;
+}

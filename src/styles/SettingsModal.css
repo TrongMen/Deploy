@@ -1,0 +1,541 @@
+/* src/modals/SettingsModal.css */
+
+.settings-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* Ngăn tương tác khi ẩn */
+  transition: opacity 0.25s ease-in-out, visibility 0s 0.25s; /* Delay visibility để opacity kịp về 0 */
+}
+
+.settings-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Cho phép tương tác khi hiện */
+  transition: opacity 0.25s ease-in-out; /* visibility chuyển ngay */
+}
+
+.settings-modal-content {
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 800px;
+  max-width: 90vw;
+  height: 600px;
+  max-height: 85vh;
+  display: flex; /* Cần thiết cho layout bên trong */
+  flex-direction: column; /* Cần thiết cho layout bên trong */
+  overflow: hidden;
+  position: relative;
+  transform: scale(0.95) translateY(10px); /* Trạng thái ban đầu cho transition */
+  opacity: 0;
+  visibility: hidden; /* Ẩn content ban đầu */
+  transition: opacity 0.2s ease-in-out 0.05s, transform 0.2s ease-in-out 0.05s, visibility 0s 0.25s;
+  /* Delay transition của content một chút so với overlay */
+}
+
+.settings-modal-overlay.active .settings-modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  visibility: visible; /* Hiện content khi overlay active */
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+.settings-modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #606770;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  border-radius: 50%;
+  z-index: 10;
+}
+.settings-modal-close-btn:hover {
+  background-color: #e4e6eb;
+  color: #1c1e21;
+}
+
+.settings-modal-layout {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.settings-modal-nav {
+  width: 240px;
+  background-color: #e4e6eb;
+  padding: 20px 0px;
+  border-right: 1px solid #cfd2d6;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+.settings-modal-nav h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1e21;
+  margin: 0 20px 20px 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #cfd2d6;
+}
+.settings-modal-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.settings-modal-nav li {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #3c4043;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s ease, border-left-color 0.15s ease;
+}
+.settings-modal-nav li:hover {
+  background-color: #d8dade;
+}
+.settings-modal-nav li.active {
+  background-color: #ffffff;
+  border-left-color: #0068ff;
+  font-weight: 500;
+  color: #0068ff;
+}
+.settings-modal-nav li.active .settings-nav-icon {
+  color: #0068ff;
+}
+.settings-nav-icon {
+  margin-right: 12px;
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color: #606770;
+}
+.beta-tag {
+  margin-left: auto;
+  font-size: 10px;
+  background-color: #0068ff;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.settings-modal-main-content {
+  flex-grow: 1;
+  padding: 24px 30px;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+.settings-modal-main-content::-webkit-scrollbar { width: 6px; }
+.settings-modal-main-content::-webkit-scrollbar-thumb { background-color: #bcc0c4; border-radius: 3px; }
+.settings-modal-main-content::-webkit-scrollbar-track { background-color: #f0f2f5; }
+
+
+.setting-content-section h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c1e21;
+  margin-bottom: 8px;
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e7e9ec;
+}
+.setting-content-section h4.mt-4 {
+    margin-top: 24px;
+}
+.setting-description {
+  font-size: 13.5px;
+  color: #606770;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.setting-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+.setting-option:last-child {
+    border-bottom: none;
+}
+
+.setting-option.radio-option label {
+  font-size: 14px;
+  color: #3c4043;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Cho label chiếm hết chiều rộng để dễ click */
+}
+.setting-option.radio-option input[type="radio"] {
+  display: none;
+}
+.radio-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  transition: border-color 0.2s;
+  flex-shrink: 0; /* Không cho co lại */
+}
+.setting-option.radio-option input[type="radio"]:checked + .radio-custom {
+  border-color: #0068ff;
+}
+.radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #0068ff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s;
+}
+.setting-option.radio-option input[type="radio"]:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.setting-label {
+  font-size: 14px;
+  color: #3c4043;
+  flex-grow: 1;
+}
+
+.setting-select {
+  padding: 8px 12px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 150px;
+  background-color: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5H7z%22%20fill%3D%22%23888%22/%3E%3C/svg%3E') no-repeat right 10px center;
+  background-size: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+.setting-select:focus {
+  border-color: #0068ff;
+  box-shadow: 0 0 0 0.2px #0068ff;
+}
+
+.toggle-option span:first-child {
+  font-size: 14px;
+  color: #3c4043;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+}
+input:checked + .slider {
+  background-color: #0068ff;
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+.slider.round {
+  border-radius: 20px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.setting-content-placeholder {
+    text-align: center;
+    padding: 40px;
+    color: #606770;
+    font-size: 15px;
+}
+
+.setting-option.action-option {
+  /* display: flex; đã có */
+  /* justify-content: space-between; đã có */
+  /* align-items: center; đã có */
+  /* padding: 12px 0; đã có */
+}
+
+.option-label-description {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 15px; /* Khoảng cách với nút hoặc switch */
+}
+
+.setting-label-main {
+  font-size: 14px;
+  color: #1c1e21; /* Màu chữ đậm hơn cho tiêu đề chính của option */
+  font-weight: 500; /* Hơi đậm hơn */
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px; /* Khoảng cách nhỏ với mô tả */
+}
+.option-icon {
+  margin-right: 8px;
+  font-size: 15px;
+  color: #606770; /* Màu icon trong option */
+  width: 18px; /* Đảm bảo icon có không gian */
+  text-align: center;
+}
+
+
+.setting-description-small {
+  font-size: 12.5px; /* Mô tả nhỏ hơn */
+  color: #606770;
+  line-height: 1.4;
+}
+
+.setting-action-btn {
+  background-color: #f0f2f5; /* Màu nền nút */
+  color: #0068ff; /* Màu chữ nút */
+  border: 1px solid #dcdfe3; /* Viền nút */
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0; /* Không cho nút co lại */
+}
+
+.setting-action-btn:hover {
+  background-color: #e4e6eb;
+  border-color: #c8cdd3;
+}
+
+/* Style cho toggle switch đã có ở phần Cài đặt chung, có thể tái sử dụng */
+/* .setting-option.toggle-option { ... } */
+/* .switch { ... } */
+/* .slider { ... } */
+
+.setting-content-placeholder { /* Thêm style cho placeholder nếu chưa có */
+    text-align: center;
+    padding: 40px;
+    color: #606770;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.change-password-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e7e9ec;
+}
+
+.back-to-settings-btn {
+  background: none;
+  border: none;
+  color: #0068ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 6px 0; /* Chỉ padding dọc, không cần padding ngang */
+  margin-right: 15px;
+}
+.back-to-settings-btn svg {
+  margin-right: 6px;
+  font-size: 15px;
+}
+.back-to-settings-btn:hover {
+  text-decoration: underline;
+}
+
+.change-password-header h4 {
+  font-size: 17px; /* Kích thước tiêu đề cho form con */
+  font-weight: 500;
+  color: #1c1e21;
+  margin: 0;
+  padding-bottom: 0; /* Bỏ padding bottom nếu đã có ở header */
+  border-bottom: none; /* Bỏ border bottom nếu đã có ở header */
+}
+
+
+.change-password-form .form-field-group {
+  margin-bottom: 18px;
+}
+
+.change-password-form .form-field-group label {
+  display: block;
+  font-size: 13.5px;
+  color: #4b4f56;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* Sử dụng lại style .input-group từ login.css hoặc định nghĩa lại */
+/* Giả sử bạn có style .input-group tương tự từ trang đăng ký/đăng nhập */
+.change-password-form .input-group.password-input-change {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  background-color: #fff; /* Để nút toggle có nền trắng */
+}
+.change-password-form .input-group.password-input-change:focus-within {
+  border-color: #0068ff;
+  box-shadow: 0 0 0 0.2px #0068ff;
+}
+
+.change-password-form .input-group.password-input-change .input-field {
+  flex-grow: 1;
+  padding: 11px 14px;
+  border: none;
+  outline: none;
+  font-size: 14.5px;
+  background-color: transparent;
+  width: 100%;
+  color: #1c1e21;
+  padding-right: 45px; /* Chừa chỗ cho nút toggle */
+  border-radius: 6px; /* Bo tròn toàn bộ nếu chỉ có input và nút */
+}
+/* Nút toggle password dùng lại style .toggle-password-button từ login.css hoặc SettingsModal.css nếu đã có */
+.change-password-form .input-group.password-input-change .toggle-password-button {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8d91;
+  font-size: 18px;
+  z-index: 2;
+}
+.change-password-form .input-group.password-input-change .toggle-password-button:hover {
+  color: #0068ff;
+}
+
+
+.change-password-actions {
+  display: flex;
+  justify-content: flex-end; /* Đẩy nút sang phải */
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e7e9ec;
+}
+
+.change-password-actions .setting-action-btn { /* Tái sử dụng class nếu phù hợp */
+  padding: 9px 18px; /* Padding cho nút Lưu/Hủy */
+  font-size: 14px;
+}
+.change-password-actions .setting-action-btn.cancel-btn {
+  background-color: #e4e6eb; /* Màu nút Hủy */
+  color: #1c1e21;
+  border: 1px solid #ced0d4;
+}
+.change-password-actions .setting-action-btn.cancel-btn:hover {
+  background-color: #d8dade;
+}
+.change-password-actions .setting-action-btn.save-btn {
+  background-color: #0068ff; /* Màu nút Lưu */
+  color: white;
+  border: 1px solid #0068ff;
+}
+.change-password-actions .setting-action-btn.save-btn:hover {
+  background-color: #0052cc;
+}
+
+.password-notes {
+  margin-top: 20px; /* Khoảng cách với các trường input */
+  padding: 12px 15px;
+  background-color: #f0f5fb; /* Màu nền xanh dương nhạt nhẹ */
+  border: 1px solid #cfe2f3; /* Viền xanh nhạt */
+  border-radius: 6px;
+  font-size: 13px; /* Font chữ nhỏ hơn cho lưu ý */
+  color: #31708f; /* Màu chữ xanh đậm hơn */
+}
+
+.password-notes .notes-title {
+  font-weight: 500; 
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  color: #0056b3; /* Màu chữ tiêu đề lưu ý */
+}
+.password-notes .notes-title svg {
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+.password-notes ul {
+  list-style-type: disc; /* Dùng dấu chấm đầu dòng */
+  padding-left: 20px; /* Thụt lề cho danh sách */
+  margin: 0;
+  line-height: 1.6; /* Giãn dòng cho dễ đọc */
+}
+
+.password-notes li {
+  margin-bottom: 4px;
+  padding: 0;
+  color: #31708f; /* Màu chữ mục lưu ý */
+  border-left: none;
+  background-color: transparent; 
+  font-weight: normal; 
+  text-align: left; 
+}
+.password-notes li::marker {
+    color: #0068ff;
+}

@@ -1,0 +1,296 @@
+.group-details-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1250; /* Cao hơn các modal khác một chút */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.group-details-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.group-details-modal-content {
+  background-color: #fff;
+  width: 380px; /* Chiều rộng tương tự Zalo */
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.25s ease-in-out;
+  max-height: 90vh; /* Giới hạn chiều cao */
+}
+
+.group-details-modal-overlay.active .group-details-modal-content {
+  transform: scale(1);
+}
+
+.group-details-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  /* border-bottom: 1px solid #f0f0f0; */ /* Zalo không có border ở đây */
+}
+
+.group-details-modal-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #050505;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.group-details-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #606770;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+.group-details-modal-close-btn:hover {
+  color: #050505;
+}
+
+.group-details-modal-body {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding: 0 15px 15px 15px;
+}
+.group-details-modal-body::-webkit-scrollbar { width: 5px; }
+.group-details-modal-body::-webkit-scrollbar-thumb { background-color: #c1c1c1; border-radius: 3px; }
+.group-details-modal-body::-webkit-scrollbar-track { background-color: #f0f0f0; }
+
+
+.group-main-info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 8px solid #f0f2f5; /* Đường kẻ dày */
+}
+
+.group-main-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 25%; /* Bo tròn nhẹ như Zalo */
+  background-color: #007bff; /* Màu placeholder */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  position: relative;
+}
+.group-main-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.group-main-avatar .camera-icon-overlay {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.group-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.group-name-container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #050505;
+  margin: 0;
+  text-align: center;
+  max-width: 250px; /* Giới hạn chiều rộng tên nhóm */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.group-name-container .edit-icon {
+  color: #657786;
+  cursor: pointer;
+  font-size: 14px;
+}
+.group-name-container .edit-icon:hover {
+  color: #050505;
+}
+
+.group-action-button {
+  background-color: #e4e6eb;
+  color: #050505;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 60%; /* Chiều rộng nút Nhắn tin */
+  transition: background-color 0.2s;
+}
+.group-action-button:hover {
+  background-color: #d8dadf;
+}
+
+.group-info-list-item, .group-info-section {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+.group-info-list-item:last-child, .group-info-section:last-child {
+  border-bottom: none;
+}
+.group-info-section:last-child {
+    border-bottom: 8px solid #f0f2f5; /* Đường kẻ dày cho section cuối */
+}
+
+
+.group-info-list-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #050505;
+  cursor: pointer;
+}
+.group-info-list-item:hover {
+  background-color: #f7f7f7;
+  margin: 0 -15px; /* Để hover full width */
+  padding: 12px 15px;
+}
+
+.group-info-list-item.danger-action {
+  color: #fa383e;
+}
+
+.group-info-list-item .item-icon {
+  font-size: 18px;
+  color: #657786;
+  margin-right: 12px;
+  width: 20px; /* Căn chỉnh icon */
+  text-align: center;
+}
+.group-info-list-item.danger-action .item-icon {
+  color: #fa383e;
+}
+.group-info-list-item .item-label {
+  flex-grow: 1;
+}
+.group-info-list-item .item-action-icon {
+  font-size: 16px;
+  color: #8a8d91;
+  margin-left: 8px;
+}
+
+.members-preview-container {
+  display: flex;
+  align-items: center;
+  padding: 5px 0; /* Thêm padding để các avatar không quá sát */
+}
+.member-avatar-preview {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: -8px; /* Để avatar chồng lên nhau */
+  border: 2px solid white;
+  overflow: hidden;
+}
+.member-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.more-members-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e4e6eb;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.group-link-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f2f5;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.group-link-display .link-text {
+  font-size: 13px;
+  color: #007bff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
+}
+.group-link-actions button {
+  background: none;
+  border: none;
+  color: #657786;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+}
+.group-link-actions button:hover {
+  color: #050505;
+}
+.group-placeholder-text {
+    color: #8a8d91;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 13px;
+}
+
+.group-main-avatar .avatar-spinner {
+  font-size: 24px; /* Kích thước spinner */
+  color: white;   /* Màu spinner */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

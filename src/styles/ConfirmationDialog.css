@@ -1,0 +1,88 @@
+.confirmation-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65); /* Tăng độ mờ cho overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300; /* Cao hơn các modal khác */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.confirmation-dialog-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.confirmation-dialog-content {
+  background-color: #fff;
+  width: 360px;
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+  text-align: center; /* Căn giữa nội dung */
+}
+
+.confirmation-dialog-overlay.active .confirmation-dialog-content {
+  transform: scale(1);
+}
+
+.confirmation-dialog-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #050505;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.confirmation-dialog-content p {
+  font-size: 14px;
+  color: #65676b;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  white-space: pre-wrap; /* Để xuống dòng nếu message dài */
+}
+
+.confirmation-dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Các nút về bên phải */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.confirmation-dialog-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.confirmation-dialog-btn.cancel {
+  background-color: #e4e6eb;
+  color: #050505;
+  border-color: #ced4da;
+}
+.confirmation-dialog-btn.cancel:hover {
+  background-color: #d8dadf;
+}
+
+.confirmation-dialog-btn.confirm {
+  background-color: #fa383e; /* Màu đỏ cho hành động nguy hiểm */
+  color: white;
+}
+.confirmation-dialog-btn.confirm:hover {
+  background-color: #e02c32;
+}

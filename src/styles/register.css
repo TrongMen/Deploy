@@ -1,0 +1,256 @@
+.zalo-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Header ở trên, form ở dưới */
+  min-height: 100vh;
+  background-color: #eef2f7; /* Màu nền xám nhạt của trang */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 40px 20px; /* Padding trên dưới nhiều hơn */
+  box-sizing: border-box;
+}
+
+.zalo-register-container .zalo-header { /* Style riêng cho header trang đăng ký nếu cần */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.zalo-register-container .zalo-header h1 {
+  font-size: 48px;
+  color: #0068ff;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.zalo-register-container .zalo-header p {
+  font-size: 16px;
+  color: #606770; /* Màu chữ mô tả nhạt hơn */
+}
+
+.register-form-wrapper {
+  background-color: #ffffff;
+  padding: 24px 32px 32px; /* Điều chỉnh padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Shadow nhẹ nhàng hơn */
+  width: 100%;
+  max-width: 420px; /* Tăng chiều rộng tối đa một chút */
+  text-align: left;
+}
+
+.register-form h2 {
+  font-size: 20px;
+  color: #1c1e21; /* Màu chữ tiêu đề đậm */
+  margin-bottom: 28px;
+  font-weight: 600; /* Đậm hơn */
+  text-align: center;
+}
+
+.register-form .input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px; /* Giảm margin một chút */
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  background-color: #ffffff; /* Nền trắng cho input group */
+}
+.register-form .input-group:focus-within {
+  border-color: #0068ff;
+  box-shadow: 0 0 0 0.2px #0068ff; /* Shadow nhẹ hơn khi focus */
+}
+
+.register-form .input-icon {
+  padding: 0 12px;
+  color: #8a8d91; /* Màu icon nhạt hơn */
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px; /* Chiều cao cố định cho icon container */
+  flex-shrink: 0; /* Không cho icon co lại */
+  border-right: 1px solid #e7e9ec; /* Đường kẻ mảnh giữa icon và input */
+}
+.register-form .input-group.no-icon-border .input-icon {
+    border-right: none; /* Dùng class này nếu không muốn border sau icon */
+}
+
+
+.register-form .input-field {
+  flex-grow: 1;
+  padding: 11px 14px; /* Điều chỉnh padding input */
+  border: none;
+  outline: none;
+  font-size: 14.5px;
+  background-color: transparent; /* Input trong suốt */
+  width: 100%;
+  color: #1c1e21;
+  border-radius: 0 6px 6px 0; /* Bo góc phải cho input */
+}
+.register-form .input-group .input-icon + .input-field { /* Nếu có icon */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.register-form .input-group > .input-field:first-child:last-child { /* Nếu chỉ có input không có icon */
+    border-radius: 6px;
+}
+
+
+.register-form .country-code-selector-register {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #1c1e21; /* Màu chữ đậm hơn */
+  font-size: 14.5px;
+  height: 42px;
+  border-right: 1px solid #e7e9ec;
+  flex-shrink: 0;
+}
+.register-form .input-field.phone-input {
+  border-radius: 0 6px 6px 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 13.5px; /* Font label nhỏ hơn */
+  color: #606770; /* Màu label */
+  margin-bottom: 6px;
+  font-weight: 500;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.form-label svg {
+  font-size: 14px;
+  color: #8a8d91; /* Màu icon của label */
+}
+
+.dob-group {
+  display: grid; /* Sử dụng grid để dễ dàng chia cột */
+  grid-template-columns: repeat(3, 1fr); /* Ba cột bằng nhau */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dob-select {
+  width: 100%; /* Select chiếm toàn bộ chiều rộng của cột grid */
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  background-color: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5H7z%22%20fill%3D%22%23888%22/%3E%3C/svg%3E') no-repeat right 10px center;
+  background-size: 12px;
+  appearance: none; /* Bỏ giao diện mặc định của select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  color: #1c1e21;
+}
+.dob-select:focus {
+  border-color: #0068ff;
+  box-shadow: 0 0 0 0.2px #0068ff;
+}
+
+.gender-group {
+  display: flex;
+  gap: 15px; /* Khoảng cách giữa các lựa chọn giới tính */
+  margin-bottom: 20px;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px; /* Font chữ lựa chọn giới tính */
+  color: #333;
+  cursor: pointer;
+  padding: 5px 0; /* Padding để dễ click hơn */
+}
+
+.radio-label input[type="radio"] {
+  margin-right: 7px;
+  accent-color: #0068ff;
+  width: 16px; /* Kích thước radio button */
+  height: 16px;
+  cursor: pointer;
+}
+
+.register-form .password-group {
+    /* Style chung của input-group đã được áp dụng */
+}
+
+.register-form .password-group .input-field {
+  padding-right: 45px;
+}
+
+.register-form .toggle-password-button {
+  position: absolute;
+  right: 1px; /* Điều chỉnh để nằm trong border */
+  top: 1px;
+  bottom: 1px;
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8d91; /* Màu icon con mắt */
+  font-size: 18px; /* Kích thước icon con mắt */
+  z-index: 2;
+}
+.register-form .toggle-password-button:hover {
+  color: #0068ff;
+}
+
+.register-button {
+  background-color: #0068ff;
+  color: white;
+  border: none;
+  padding: 11px 20px; /* Điều chỉnh padding nút */
+  font-size: 15px; /* Font nút */
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  margin-top: 25px; /* Khoảng cách với trường phía trên */
+  margin-bottom: 20px;
+}
+
+.register-button:hover {
+  background-color: #0052cc;
+}
+
+.login-link-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link-section p {
+  font-size: 13.5px;
+  color: #606770;
+  margin-bottom: 6px;
+}
+
+.back-to-login-link {
+  font-size: 14px;
+  color: #0068ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-to-login-link:hover {
+  text-decoration: underline;
+}
+.error-text {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+  margin-left: 8px;
+}
+
+
+/* Kế thừa một số style từ login.css nếu có dùng chung (ví dụ: .input-group) */
+/* Tuy nhiên, file này nên tự chứa các style cần thiết cho trang đăng ký */ 
